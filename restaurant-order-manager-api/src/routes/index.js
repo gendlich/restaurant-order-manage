@@ -1,8 +1,10 @@
-var express = require('express');
-var router = express.Router();
+'use strict';
 
-router.get('/health', function(req, res) {
-  res.json({ status: 'ok' });
-});
+const router = require('express').Router();
+
+router.get('/health', (_req, res) => res.json({ status: 'ok' }));
+router.use('/inputs', require('./inputs'));
+router.use('/products', require('./products'));
+router.use('/orders', require('./orders'));
 
 module.exports = router;
